@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ishan Prasad — Automation &amp; Robotics Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#15161b;
+    --bg-2:#1c1e25;
+    --panel:#20232b;
+    --panel-hi:#262a33;
+    --line:#383c46;
+    --line-soft:#2a2d36;
+    --cream:#ece7d8;
+    --muted:#9aa0ac;
+    --muted-dim:#6c7280;
+    --blue:#5e97cc;
+    --green:#6aa47c;
+    --amber:#d99a3d;
+    --red:#c15c50;
+    --mono:'IBM Plex Mono', monospace;
+    --sans:'IBM Plex Sans', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--cream);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber); color:#15161b;}
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible, .tile:focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:3px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  .wrap{max-width:960px; margin:0 auto; padding:0 28px;}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    background:
+      linear-gradient(var(--bg) 0%, var(--bg) 100%),
+      repeating-linear-gradient(0deg, rgba(236,231,216,0.05) 0px, rgba(236,231,216,0.05) 1px, transparent 1px, transparent 48px),
+      repeating-linear-gradient(90deg, rgba(236,231,216,0.05) 0px, rgba(236,231,216,0.05) 1px, transparent 1px, transparent 48px);
+    overflow:hidden;
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    width:100%;
+    padding:128px 28px 70px;
+    max-width:960px;
+    margin:0 auto;
+  }
+  .status-line{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--mono);
+    font-size:0.75rem;
+    color:var(--muted);
+    letter-spacing:0.03em;
+    margin-bottom:18px;
+  }
+  .lamp{width:8px; height:8px; border-radius:50%; display:inline-block; box-shadow:0 0 7px currentColor;}
+  .lamp.blue{background:var(--blue); color:var(--blue);}
+  .lamp.green{background:var(--green); color:var(--green);}
+  .lamp.amber{background:var(--amber); color:var(--amber);}
+
+  h1.name{
+    font-size:clamp(2.4rem, 7vw, 4.2rem);
+    font-weight:700;
+    margin:0 0 10px;
+    letter-spacing:-0.015em;
+    line-height:1.02;
+  }
+  .role-line{
+    font-family:var(--mono);
+    font-size:clamp(0.85rem, 1.6vw, 1.05rem);
+    color:var(--amber);
+    margin:0 0 26px;
+    max-width:56ch;
+  }
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:22px;
+    font-family:var(--mono);
+    font-size:0.8rem;
+    color:var(--muted);
+  }
+  .contact-row a{text-decoration:none; border-bottom:1px solid var(--line);}
+  .contact-row a:hover{color:var(--amber); border-color:var(--amber);}
+  /* ============ SECTIONS ============ */
+  section{padding:70px 0;}
+  section.tight{padding:50px 0;}
+  .kicker{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    color:var(--muted-dim);
+    letter-spacing:0.08em;
+    margin:0 0 10px;
+  }
+  h2.section-title{
+    font-size:1.65rem;
+    font-weight:700;
+    margin:0 0 22px;
+    color:var(--cream);
+  }
+  p{margin:0 0 14px; max-width:64ch; color:var(--muted);}
+  p:last-child{margin-bottom:0;}
+  .lede{font-size:1.05rem; color:var(--cream); max-width:62ch;}
+
+  /* ============ CONTROL PANEL / PROJECT TILES ============ */
+  .panel-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:14px;
+  }
+  .tile{
+    all:unset;
+    cursor:pointer;
+    display:block;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:22px 22px 20px;
+    transition:background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .tile:hover, .tile:focus-visible{
+    background:var(--panel-hi);
+    border-color:var(--amber);
+    transform:translateY(-2px);
+  }
+  .tile-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:var(--mono);
+    font-size:0.7rem;
+    color:var(--muted-dim);
+    margin-bottom:12px;
+  }
+  .tile h3{
+    font-size:1.08rem;
+    font-weight:600;
+    margin:0 0 8px;
+    color:var(--cream);
+  }
+  .tile p{
+    font-size:0.88rem;
+    margin:0;
+    color:var(--muted);
+  }
+  .tile .open-hint{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    color:var(--amber);
+    margin-top:14px;
+    display:inline-block;
+  }
+
+  /* ============ MODAL ============ */
+  dialog.station{
+    max-width:640px;
+    width:92vw;
+    border:1px solid var(--line);
+    border-radius:4px;
+    background:var(--bg-2);
+    color:var(--cream);
+    padding:0;
+    box-shadow:0 30px 80px rgba(0,0,0,0.55);
+  }
+  dialog.station::backdrop{
+    background:rgba(8,9,11,0.78);
+  }
+  .station-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    padding:26px 28px 18px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .station-head h3{margin:0 0 6px; font-size:1.3rem;}
+  .station-head .tile-top{margin-bottom:0;}
+  .station-close{
+    all:unset;
+    cursor:pointer;
+    font-family:var(--mono);
+    font-size:0.85rem;
+    color:var(--muted);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:4px 10px;
+    line-height:1;
+  }
+  .station-close:hover{color:var(--amber); border-color:var(--amber);}
+  .station-body{padding:22px 28px 28px;}
+  ul.bullets{margin:0 0 18px; padding:0; list-style:none;}
+  ul.bullets li{
+    position:relative;
+    padding-left:20px;
+    margin-bottom:9px;
+    color:var(--muted);
+    font-size:0.93rem;
+    max-width:58ch;
+  }
+  ul.bullets li::before{content:"—"; position:absolute; left:0; color:var(--amber);}
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    padding:4px 9px;
+    border:1px solid var(--line);
+    color:var(--muted);
+    border-radius:2px;
+  }
+  /* ============ I/O SKILLS PANEL ============ */
+  .io-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    border:1px solid var(--line);
+    border-radius:3px;
+    overflow:hidden;
+  }
+  .io-block{
+    padding:20px 22px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--panel);
+  }
+  .io-grid .io-block:nth-last-child(-n+2){border-bottom:none;}
+  .io-block h4{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.04em;
+    color:var(--blue);
+    text-transform:uppercase;
+    margin:0 0 10px;
+  }
+  .io-block ul{margin:0; padding:0; list-style:none; font-size:0.88rem; color:var(--muted);}
+  .io-block li{padding:3px 0;}
+  .cert-note{
+    display:flex; align-items:center; gap:9px;
+    font-family:var(--mono); font-size:0.78rem; color:var(--muted);
+    margin-top:18px;
+  }
+
+  /* entries */
+  .entry{margin-bottom:22px;}
+  .entry:last-child{margin-bottom:0;}
+  .entry-head{display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px 16px; align-items:baseline;}
+  .entry-head h4{font-size:1.02rem; font-weight:600; margin:0; color:var(--cream);}
+  .entry-head .meta{font-family:var(--mono); font-size:0.76rem; color:var(--muted-dim);}
+
+  hr.rule{border:none; border-top:1px solid var(--line-soft); margin:0;}
+
+  footer{
+    padding:36px 0 46px;
+    font-family:var(--mono);
+    font-size:0.76rem;
+    color:var(--muted-dim);
+    text-align:center;
+  }
+  footer a{color:var(--cream); text-decoration:none; border-bottom:1px solid var(--line);}
+  footer a:hover{color:var(--amber); border-color:var(--amber);}
+
+  @media (max-width:600px){
+    section{padding:52px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="status-line">
+      <span class="lamp blue"></span><span class="lamp green"></span><span class="lamp amber"></span>
+      STATUS: OPEN TO INTERNSHIPS
+    </div>
+    <h1 class="name">Ishan Prasad</h1>
+    <p class="role-line">Robotics &amp; Automation Engineering Student — PLC Programming, Robotics Integration, Industrial IoT</p>
+    <div class="contact-row">
+      <a href="mailto:Ishanprasad2007@gmail.com">Ishanprasad2007@gmail.com</a>
+      <span>480-955-6890</span>
+      <a href="https://www.linkedin.com/in/ishan-prasad-116176381" target="_blank" rel="noopener">LinkedIn</a>
+      <span>Tempe, Arizona</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="tight" id="about">
+    <p class="kicker">ABOUT</p>
+    <p class="lede">Robotics and Autonomous Systems engineering student at Arizona State University (3.91 GPA), building hardware–software integrated systems across PLC programming, robotic arm integration, machine vision, and digital twin simulation.</p>
+    <p>I'm drawn to the point where a control system meets a physical process — where a line of ladder logic has to close a relay, move a robot arm, and keep a person safe, all in real time.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section id="projects">
+    <p class="kicker">SELECTED WORK</p>
+    <h2 class="section-title">Control Panel</h2>
+    <p style="margin-bottom:26px;">Five stations from the automated wafer-handling line and related coursework. Click a tile to open the full write-up.</p>
+
+    <div class="panel-grid">
+      <button class="tile" onclick="document.getElementById('m1').showModal()">
+        <div class="tile-top"><span>RUNG 0001</span><span class="lamp blue" style="box-shadow:none;"></span></div>
+        <h3>Automated Wafer Handling Workstation</h3>
+        <p>Five DOBOT arms, FOUP transport, conveyors, and PLC sequencing for a 24-wafer autonomous batch.</p>
+        <span class="open-hint">Open station →</span>
+      </button>
+
+      <button class="tile" onclick="document.getElementById('m2').showModal()">
+        <div class="tile-top"><span>RUNG 0002</span><span class="lamp green" style="box-shadow:none;"></span></div>
+        <h3>Digital Twin Factory Simulation</h3>
+        <p>Prototwin model of the workstation to validate reach, timing, and sensor placement before fabrication.</p>
+        <span class="open-hint">Open station →</span>
+      </button>
+
+      <button class="tile" onclick="document.getElementById('m3').showModal()">
+        <div class="tile-top"><span>RUNG 0003</span><span class="lamp amber" style="box-shadow:none;"></span></div>
+        <h3>PLC Bottle Filling System</h3>
+        <p>Arduino Opta ladder logic with timers, counters, latching, and fault interlocks.</p>
+        <span class="open-hint">Open station →</span>
+      </button>
+
+      <button class="tile" onclick="document.getElementById('m4').showModal()">
+        <div class="tile-top"><span>RUNG 0004</span><span class="lamp blue" style="box-shadow:none;"></span></div>
+        <h3>DOBOT Vision &amp; Tic-Tac-Toe</h3>
+        <p>OpenCV + Minimax pick-and-place, with TCP calibration for accurate robot positioning.</p>
+        <span class="open-hint">Open station →</span>
+      </button>
+
+      <button class="tile" onclick="document.getElementById('m5').showModal()">
+        <div class="tile-top"><span>RUNG 0005</span><span class="lamp green" style="box-shadow:none;"></span></div>
+        <h3>PLC + Robot Integration</h3>
+        <p>Relay-based PLC-to-Dobot signaling with five concurrent robot control scripts.</p>
+        <span class="open-hint">Open station →</span>
+      </button>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="skills">
+    <p class="kicker">I/O CONFIGURATION</p>
+    <h2 class="section-title">Skills</h2>
+    <div class="io-grid">
+      <div class="io-block">
+        <h4>Automation</h4>
+        <ul><li>PLC Programming</li><li>IEC 61131-3</li><li>Arduino Opta</li><li>Industrial I/O</li><li>Conveyor Integration</li><li>Sensors</li></ul>
+      </div>
+      <div class="io-block">
+        <h4>Robotics</h4>
+        <ul><li>DOBOT Magician Lite</li><li>Trajectory Planning</li><li>TCP Calibration</li><li>Coordinate Systems</li><li>Robot Integration</li></ul>
+      </div>
+      <div class="io-block">
+        <h4>Programming &amp; Vision</h4>
+        <ul><li>Python, C++</li><li>G-code, Ladder Logic</li><li>OpenCV, Machine Vision</li><li>HSV Segmentation</li></ul>
+      </div>
+      <div class="io-block">
+        <h4>CAD, Simulation &amp; Tools</h4>
+        <ul><li>Autodesk Fusion 360 / CAM</li><li>Prototwin</li><li>PyBullet</li><li>DobotDLL, Arduino PLC IDE</li><li>NumPy, SciPy, VS Code</li></ul>
+      </div>
+    </div>
+    <div class="cert-note">
+      <span class="lamp amber"></span>
+      Certification in progress: Autodesk Certified User / CSWA Electrical — Expected December 2026
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="tight" id="education">
+    <p class="kicker">EDUCATION</p>
+    <div class="entry">
+      <div class="entry-head">
+        <h4>Arizona State University — Mesa, AZ</h4>
+        <span class="meta">Expected Dec. 2029</span>
+      </div>
+      <p>B.S.E. Robotics and Autonomous Systems &nbsp;·&nbsp; GPA: 3.91</p>
+      <p>Relevant coursework: Robotics &amp; Autonomous Systems, Data Structures &amp; Algorithms, Calculus, Industrial Automation / PLC Systems.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="tight" id="activities">
+    <p class="kicker">ACTIVITIES &amp; LEADERSHIP</p>
+    <div class="entry">
+      <div class="entry-head"><h4>Drone Devils — Member</h4><span class="meta">Freshman Year – Present</span></div>
+      <p>Build and pilot drones as part of a student organization at Arizona State University.</p>
+    </div>
+    <div class="entry">
+      <div class="entry-head"><h4>Undergraduate Student Government (USG), ASU — Senator</h4><span class="meta">Present</span></div>
+      <p>Serve as a senator representing undergraduate students in university governance.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  END OF PROGRAM — Ishan Prasad · <a href="mailto:Ishanprasad2007@gmail.com">Ishanprasad2007@gmail.com</a> · <a href="https://www.linkedin.com/in/ishan-prasad-116176381" target="_blank" rel="noopener">LinkedIn</a>
+</footer>
+
+<!-- ============ MODALS ============ -->
+<dialog class="station" id="m1">
+  <div class="station-head">
+    <div>
+      <div class="tile-top" style="margin-bottom:8px;"><span>RUNG 0001</span></div>
+      <h3>Automated Semiconductor Wafer Handling Workstation</h3>
+    </div>
+    <button class="station-close" onclick="document.getElementById('m1').close()">Close ✕</button>
+  </div>
+  <div class="station-body">
+    <ul class="bullets">
+      <li>Integrated multiple DOBOT robotic arms, FOUP-based wafer handling, conveyors, IR sensors, machine vision, PLC control, and laser engraving into one automated manufacturing workflow.</li>
+      <li>Contributed to robot wiring, waypoint programming, workstation layout, and system sequencing for autonomous wafer movement.</li>
+      <li>Designed the system to execute a complete 24-wafer batch with coordinated robot and conveyor operations.</li>
+      <li>Took primary responsibility for physical integration — soldering, wiring, and grounding every connection between the PLC, Dobot arms, and conveyor belt.</li>
+    </ul>
+    <div class="tag-row">
+      <span class="tag">DOBOT Magician Lite</span><span class="tag">Arduino Opta PLC</span><span class="tag">Machine Vision</span><span class="tag">Conveyor Automation</span><span class="tag">FOUP Handling</span>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="station" id="m2">
+  <div class="station-head">
+    <div>
+      <div class="tile-top" style="margin-bottom:8px;"><span>RUNG 0002</span></div>
+      <h3>Digital Twin Factory Simulation</h3>
+    </div>
+    <button class="station-close" onclick="document.getElementById('m2').close()">Close ✕</button>
+  </div>
+  <div class="station-body">
+    <ul class="bullets">
+      <li>Built a Prototwin digital twin of the wafer-handling workstation to validate robot reach, sensor placement, timing synchronization, and conveyor workflows before fabrication.</li>
+      <li>Verified reach envelopes of all 5 Dobot Magician Lites to rule out collisions or dead zones during transfers.</li>
+      <li>Used simulation to tune conveyor speed, wafer spacing, and handoff timing between robotic stations before committing to physical hardware.</li>
+    </ul>
+    <div class="tag-row">
+      <span class="tag">Prototwin</span><span class="tag">Reach Analysis</span><span class="tag">Sensor Validation</span><span class="tag">Pre-fabrication Risk Reduction</span>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="station" id="m3">
+  <div class="station-head">
+    <div>
+      <div class="tile-top" style="margin-bottom:8px;"><span>RUNG 0003</span></div>
+      <h3>PLC-Controlled Bottle Filling Automation System</h3>
+    </div>
+    <button class="station-close" onclick="document.getElementById('m3').close()">Close ✕</button>
+  </div>
+  <div class="station-body">
+    <ul class="bullets">
+      <li>Designed a bottle-filling workstation using Arduino Opta, Arduino PLC IDE, Arduino IoT Cloud, sensors, conveyor control, timers, counters, and finite-state-machine logic.</li>
+      <li>Implemented IEC 61131-3 ladder logic including seal circuits, TON / TOF timers, counters, latching, edge operations, and fault interlocks.</li>
+      <li>Sequenced the full cycle: start → transport → sensor detection → stop → 10-second fill → restart, entirely in ladder logic.</li>
+    </ul>
+    <div class="tag-row">
+      <span class="tag">IEC 61131-3</span><span class="tag">TON / TOF Timers</span><span class="tag">Latching Logic</span><span class="tag">Fault Interlocks</span>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="station" id="m4">
+  <div class="station-head">
+    <div>
+      <div class="tile-top" style="margin-bottom:8px;"><span>RUNG 0004</span></div>
+      <h3>DOBOT Robotic Automation &amp; Computer Vision</h3>
+    </div>
+    <button class="station-close" onclick="document.getElementById('m4').close()">Close ✕</button>
+  </div>
+  <div class="station-body">
+    <ul class="bullets">
+      <li>Developed robotic pick-and-place, trajectory-planning, and conveyor-integration systems using DOBOT Magician Lite and Python.</li>
+      <li>Built a computer-vision Tic-Tac-Toe system using OpenCV, HSV segmentation, and Minimax decision logic to coordinate robot block placement.</li>
+      <li>Applied Cartesian and joint coordinate systems and TCP calibration for accurate robot positioning and plotting.</li>
+    </ul>
+    <div class="tag-row">
+      <span class="tag">OpenCV</span><span class="tag">HSV Segmentation</span><span class="tag">Minimax</span><span class="tag">TCP Calibration</span><span class="tag">Trajectory Planning</span>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="station" id="m5">
+  <div class="station-head">
+    <div>
+      <div class="tile-top" style="margin-bottom:8px;"><span>RUNG 0005</span></div>
+      <h3>PLC and Robot Integration</h3>
+    </div>
+    <button class="station-close" onclick="document.getElementById('m5').close()">Close ✕</button>
+  </div>
+  <div class="station-body">
+    <ul class="bullets">
+      <li>Integrated PLC control with DOBOT Magician Lite robots using Python, relay-based signaling, Magic Box communication, and analog thresholding.</li>
+      <li>Used Python's multiprocessing library to run five simultaneous robot control scripts so all stations could operate concurrently.</li>
+      <li>Conducted robotic safety and motion analysis covering collision reduction, motion smoothing, speed limiting, and path-planning.</li>
+    </ul>
+    <div class="tag-row">
+      <span class="tag">Relay Signaling</span><span class="tag">Multiprocessing</span><span class="tag">Analog Thresholding</span><span class="tag">Motion Safety Analysis</span>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  // click outside dialog content to close
+  document.querySelectorAll('dialog.station').forEach(function(dlg){
+    dlg.addEventListener('click', function(e){
+      const rect = dlg.getBoundingClientRect();
+      const inside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+      if(!inside) dlg.close();
+    });
+  });
+</script>
+
+</body>
+</html>
